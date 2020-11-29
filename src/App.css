@@ -1,0 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+a:hover {
+  color: skyblue;
+}
+
+.navbar h2 {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.3rem 1rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  color: #000;
+  background: skyblue;
+  border-radius: 0.5rem;
+}
+
+.btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+.date {
+  margin-left: 1rem;
+  margin-right: 1rem; 
+}
+
+.repo-card-title {
+  margin: 0.5rem 0 0 0.5rem;
+}
+
+.repo-card-title-link {
+  text-decoration: none;  
+}
+
+.repo-card-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.repo-card-stars {
+  margin: 0.5rem 0 0.5rem 0.5rem;
+}
+
+.repo-card-link {
+  margin: 0 0 0.5rem 0.5rem;
+}
+
+input {
+  display: inline-block;
+  width: 100%;
+  font-size: 1rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin: 1rem auto;
+  align-items: center;
+}
+
+.search-card h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.owner-login {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.owner-avatar img {
+  width: 35%;
+  margin-bottom: 1rem;
+}
+
+.langs {
+  margin-bottom: 1rem;
+}
+
+.modal-page nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.last-commit {
+  margin-bottom: 1rem;
+}
+
+.description {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+nav {
+  margin-bottom: 2rem;
+}
+
+.paginator {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-item {
+  margin: 0 0.2rem;
+  padding: 0.2rem;
+  border: 1px solid lightgray;
+}
+
+.page-item:active {
+  background: #333;
+  color: #fff;
+}

@@ -1,0 +1,46 @@
+.root {
+    margin: 7rem auto;
+    width: 60%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .root__cards {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .root__button {
+    padding: 1rem 0;
+    font-size: 1rem;
+    width: 20%;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .root__button:hover {
+    background: skyblue;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .root__button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .root {
+      width: 90%;
+    }
+
+    .root__button {
+      width: 100%;
+    }
+  }
