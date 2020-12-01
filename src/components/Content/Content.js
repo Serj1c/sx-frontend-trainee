@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Spinner from '../Spinner/Spinner';
-import News from '../News/News';
+import Spinner from '../common/Spinner/Spinner';
+import { News } from '../News/News';
+import { Button } from '../common/Button/Button';
 import { fetchNewsIds } from '../../functions/API';
 import './Content.css';
 
-export default function Content() {
+export function Content() {
 
     const [newsIds, setNewsIds] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -27,10 +28,10 @@ export default function Content() {
 
     return (
         <div className="root">
-            <button onClick={handleClick} type="button" className="root__button">Update News</button>
+            <Button onClick={handleClick}>Update News</Button>
             <div className="root__cards">
                 {loading ? <Spinner /> : newsIds.slice(0, 100).map(storyId => (
-                    <Link to="/item/:id">
+                    <Link to={`/item/${storyId}`}>
                         <News key={storyId} storyId={storyId}/>
                     </Link>
                 ))} 

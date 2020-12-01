@@ -1,6 +1,6 @@
 import './Navbar.css';
 
-export default function Navbar() {
+export function Navbar() {
     return (
         <div className="navbar">
             <h2>News from HackerNews</h2>

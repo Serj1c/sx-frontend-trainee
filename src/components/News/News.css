@@ -1,4 +1,4 @@
-.root__card {
+.card {
     width: 100%;
     height: fit-content;
     margin-top: 0.5rem;
@@ -7,7 +7,7 @@
     border-radius: 10px;
   }
   
-.root__card:hover {
+.card:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }

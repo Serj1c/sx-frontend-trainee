@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../common/Spinner/Spinner';
 import { fetchNews } from '../../functions/API';
 import './News.css';
 
-function News({ storyId }) {
+export function News({ storyId }) {
 
     const [news, setNews] = useState({});
     const [loading, setLoading] = useState(true);
@@ -12,9 +12,6 @@ function News({ storyId }) {
         fetchNews(storyId).then(data => setNews(data));
         setLoading(false);
 
-        /* setInterval(() => {
-            fetchNews();
-        }, 5000); */
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -22,7 +19,7 @@ function News({ storyId }) {
     let dateUpdated = date.toGMTString();
 
     return (
-        <div className="root__card">
+        <div className="card">
             {loading ? <Spinner /> : 
                 <>
                     <h3>{news.title}</h3>
@@ -38,5 +35,3 @@ function News({ storyId }) {
         </div>
     )
 }
-
-export default News;
