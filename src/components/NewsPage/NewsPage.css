@@ -10,9 +10,37 @@
   li {
       font-size: 1.25rem;
       list-style: none;
-      line-height: 1.5rem;
   }
 
   .title {
       margin-bottom: 2rem;
+      text-align: left;
+  }
+
+  a {
+      text-decoration: none;
+      padding: 0 0.5rem;
+  }
+
+  ul {
+      margin-top: 1rem;
+  }
+
+  .link:hover {
+    color: inherit;
+    text-decoration: underline;
+  } 
+
+  @media (max-width: 375px) {
+    .container {
+        align-items: center;
+    }
+
+    li {
+        font-size: 1rem;
+    }
+
+    .link {
+        text-align: center;
+    }
   }

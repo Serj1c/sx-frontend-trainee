@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Spinner from '../common/Spinner/Spinner';
 import { News } from '../News/News';
 import { Button } from '../common/Button/Button';
-import { fetchNewsIds } from '../../functions/API';
+import { fetchNewsIds } from '../../utils/functions';
 import './Content.css';
 
 export function Content() {

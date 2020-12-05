@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Spinner from '../common/Spinner/Spinner';
-import { fetchNews } from '../../functions/API';
+import { fetchNews } from '../../utils/functions';
 import './News.css';
 
 export function News({ storyId }) {
