@@ -25,7 +25,7 @@ export function Content() {
             const interval = setInterval(() => {
                 console.log('fetching...')
                 fetchNewsIds().then(data => setNewsIds(data));
-            }, 20000);
+            }, 60000);
             return () => {
                 clearInterval(interval)
             }
