@@ -1,9 +1,7 @@
-import React from 'react'
+import './Comment.css'
 
 export function Comment({ comment }) {
     return (
-        <>
-            <p>{comment}</p>
-        </>
+            <p className="comment_text">{comment}</p>
     )
 }

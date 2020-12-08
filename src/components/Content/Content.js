@@ -12,18 +12,34 @@ export function Content() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        
-        fetchNewsIds().then(data => setNewsIds(data));
-        setLoading(false);
-        
-        /* setInterval(() => {
+        try {
             fetchNewsIds().then(data => setNewsIds(data));
-        }, 30000); */
-
+            setLoading(false);
+        } catch (error) {
+            console.log(error)
+        }
     }, []);
 
+    useEffect(() => {
+        try {
+            const interval = setInterval(() => {
+                console.log('fetching...')
+                fetchNewsIds().then(data => setNewsIds(data));
+            }, 20000);
+            return () => {
+                clearInterval(interval)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }, [newsIds]);
+
     const handleClick = () => {
-        fetchNewsIds().then(data => setNewsIds(data));
+        try {
+            fetchNewsIds().then(data => setNewsIds(data));
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (

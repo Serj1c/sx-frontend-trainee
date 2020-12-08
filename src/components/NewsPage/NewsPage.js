@@ -14,12 +14,16 @@ export function NewsPage() {
     const params = useParams();
 
     useEffect(() => {
-        fetchNews(params.id).then(data => setNews(data));
-        setLoading(false);
+        try {
+            fetchNews(params.id).then(data => setNews(data));
+            setLoading(false);
+        } catch (error) {
+            console.log(error)
+        }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+    
     let date = new Date(news.time * 1000);
     let dateUpdated = date.toGMTString();
 
@@ -31,8 +35,12 @@ export function NewsPage() {
                 {loading ? <Spinner /> : 
                     <div>
                         <h1 className="title">{news.title}</h1>
-                        <span className="link"><i className="fas fa-angle-double-right"></i><a href={news.url} target="_blank" rel="noreferrer">Click me to read a full story</a><i class="fas fa-angle-double-left"></i></span>
-                        <ul className="info-block">
+                        <span className="link">
+                            <i className="fas fa-angle-double-right"></i>
+                            <a href={news.url} target="_blank" rel="noreferrer">Click me to read a full story</a>
+                            <i className="fas fa-angle-double-left"></i>
+                        </span>
+                        <ul>
                             <li><i>written by: </i><strong>{news.by}</strong></li>
                             <li><i>published:</i> <strong>{dateUpdated}</strong></li>
                             <li><i>{news.descendants} comment{news.descendants === 1 ? " " : "s"}</i></li>

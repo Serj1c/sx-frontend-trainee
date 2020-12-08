@@ -7,20 +7,19 @@ export function Comments({ commentId }) {
     const [comments, setComments] = useState({});
 
     useEffect(() => {
-        fetchComment(commentId).then(data => setComments(data));
-        //console.log(Object.values(comments).filter(comment => comment.length > 10))
-
-        /* setInterval(() => {
+        try {
             fetchComment(commentId).then(data => setComments(data));
-        }, 30000); */
+        } catch (error) {
+            console.log(error)
+        }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <div style={{margin: "2rem"}}>
+        <div style={{marginTop: "1rem"}}>
             {Object.values(comments).filter(comment => comment.length > 20).map((comment) => (
-                <Comment comment={comment}/>
+                <Comment key={Math.random()} comment={comment}/>
             ))}
         </div>
     )
