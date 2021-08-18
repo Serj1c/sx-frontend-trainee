@@ -7,7 +7,7 @@
     align-items: center;
   }
 
-  .root__cards {
+  .root_cards {
     display: flex;
     flex-direction: column;
     width: 100%;

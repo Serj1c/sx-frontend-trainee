@@ -1,29 +1,28 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Spinner from '../common/Spinner/Spinner';
-import { News } from '../News/News';
-import { Button } from '../common/Button/Button';
-import { fetchNewsIds } from '../../utils/functions';
-import './Content.css';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Spinner } from 'components/common'
+import { News } from './components'
+import { Button } from 'components/common'
+import { fetchNewsIds } from 'utils/functions'
+import styles from './Content.module.css'
 
-export function Content() {
+export const Content: React.FunctionComponent = (): JSX.Element => {
 
-    const [newsIds, setNewsIds] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [newsIds, setNewsIds] = useState<Array<number>>([])
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         try {
-            fetchNewsIds().then(data => setNewsIds(data));
+            fetchNewsIds().then(data => setNewsIds(data))
             setLoading(false);
         } catch (error) {
             console.log(error)
         }
-    }, []);
+    }, [])
 
     useEffect(() => {
         try {
             const interval = setInterval(() => {
-                console.log('fetching...')
                 fetchNewsIds().then(data => setNewsIds(data));
             }, 60000);
             return () => {
@@ -32,9 +31,9 @@ export function Content() {
         } catch (error) {
             console.log(error)
         }
-    }, [newsIds]);
+    }, [newsIds])
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         try {
             fetchNewsIds().then(data => setNewsIds(data));
         } catch (error) {
@@ -43,12 +42,12 @@ export function Content() {
     }
 
     return (
-        <div className="root">
+        <div className={styles.root}>
             <Button onClick={handleClick}>Update News</Button>
-            <div className="root__cards">
+            <div className={styles.root_cards}>
                 {loading ? <Spinner /> : newsIds.slice(0, 100).map(storyId => (
-                    <Link to={`/item/${storyId}`}>
-                        <News key={storyId} storyId={storyId}/>
+                    <Link to={`/item/${storyId}`} key={storyId}>
+                        <News storyId={storyId}/>
                     </Link>
                 ))} 
             </div>

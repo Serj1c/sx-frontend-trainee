@@ -1,17 +1,18 @@
-import { fetchNews } from '../../utils/functions';
-import { Link, useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { Button } from '../common/Button/Button';
-import Spinner from '../common/Spinner/Spinner';
-import './NewsPage.css';
-import { Comments } from '../Comments/Comments';
+import { fetchNews } from 'utils/functions'
+import { Link, useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Button } from 'components/common'
+import { Spinner } from 'components/common'
+import styles from './NewsPage.module.css'
+import { Comments } from './components'
+import { StoryModel } from 'models/StoryModel'
 
-export function NewsPage() {
+export const NewsPage:React.FunctionComponent = (): JSX.Element => {
 
-    const [loading, setLoading] = useState(true);
-    const [news, setNews] = useState({});
+    const [loading, setLoading] = useState<boolean>(true)
+    const [news, setNews] = useState<StoryModel>()
 
-    const params = useParams();
+    const params: any = useParams()
 
     useEffect(() => {
         try {
@@ -20,22 +21,21 @@ export function NewsPage() {
         } catch (error) {
             console.log(error)
         }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     let date = new Date(news.time * 1000);
-    let dateUpdated = date.toGMTString();
+    let dateUpdated = date.toUTCString();
 
     return (
-            <div className="container">
+            <div className={styles.container}>
                 <Link to="/">
                     <Button>Back to News</Button>
                 </Link>
                 {loading ? <Spinner /> : 
                     <div>
-                        <h1 className="title">{news.title}</h1>
-                        <span className="link">
+                        <h1 className={styles.title}>{news.title}</h1>
+                        <span className={styles.link}>
                             <i className="fas fa-angle-double-right"></i>
                             <a href={news.url} target="_blank" rel="noreferrer">Click me to read a full story</a>
                             <i className="fas fa-angle-double-left"></i>
@@ -45,7 +45,7 @@ export function NewsPage() {
                             <li><i>published:</i> <strong>{dateUpdated}</strong></li>
                             <li><i>{news.descendants} comment{news.descendants === 1 ? " " : "s"}</i></li>
                         </ul>
-                        {news.kids ? news.kids.map(commentId => (
+                        {news.kids ? news.kids.map((commentId) => (
                             <Comments key={commentId} commentId={commentId}/>)) : <i>Nobody commented yet</i> }
                     </div>
                 }

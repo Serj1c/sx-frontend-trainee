@@ -1,6 +1,7 @@
-import spinner from './spinner.gif';
+import React from 'react'
+import spinner from './spinner.gif'
 
-export default function Spinner() {
+export const Spinner: React.FunctionComponent = (): JSX.Element => {
     return (
         <div>
             <img src={spinner} alt="Loading"
