@@ -2,7 +2,6 @@ import { fetchNews } from 'utils/functions'
 import { Link, useParams } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import { Button } from 'components/common'
-import { Spinner } from 'components/common'
 import styles from './NewsPage.module.css'
 import { Comments } from './components'
 import { StoryModel } from 'models/StoryModel'
@@ -32,7 +31,7 @@ export const NewsPage:React.FunctionComponent = (): JSX.Element => {
                 <Link to="/">
                     <Button>Back to News</Button>
                 </Link>
-                {loading ? <Spinner /> : 
+                {!loading && 
                     <div>
                         <h1 className={styles.title}>{news.title}</h1>
                         <span className={styles.link}>

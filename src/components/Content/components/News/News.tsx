@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Spinner } from 'components/common'
+//import { Spinner } from 'components/common'
 import { fetchNews } from 'utils/functions'
 import styles from './News.module.css'
 import { StoryModel } from 'models/StoryModel'
@@ -24,9 +24,9 @@ export const News: React.FunctionComponent<Props> = ({ storyId }): JSX.Element =
     let dateUpdated = date.toUTCString()
 
     return (
-        <div className={styles.card}>
-            {loading ? <Spinner /> : 
-                <>
+        <>
+            {!loading && 
+                <div className={styles.card}>
                     <h3>{news?.title}</h3>
                     <div>
                         <i>written by: {news?.by}</i>
@@ -35,8 +35,8 @@ export const News: React.FunctionComponent<Props> = ({ storyId }): JSX.Element =
                         <br/>
                         <i>published: {dateUpdated}</i>
                     </div>
-                </>
+                </div>
             }
-        </div>
+        </>
     )
 }

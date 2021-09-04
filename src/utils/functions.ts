@@ -1,6 +1,5 @@
 import axios from 'axios'
-
-const baseURL = `https://hacker-news.firebaseio.com/v0`
+import { baseURL } from './constants'
 
 export const fetchNewsIds = async () => {
     const result = await axios
@@ -8,7 +7,7 @@ export const fetchNewsIds = async () => {
         .then(({ data }) => data)
         .catch(err => console.log(err));
     return result
-};
+}
 
 export const fetchNews = async (storyId: number) => {
     const result = await axios
