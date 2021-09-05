@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { baseURL } from './constants'
 
-export const fetchNewsIds = async () => {
+export const fetchNews = async (storyId: number) => {
     const result = await axios
-        .get(baseURL + '/newstories.json')
+        .get(baseURL + `/item/${storyId}.json`)
         .then(({ data }) => data)
         .catch(err => console.log(err));
     return result
 }
 
-export const fetchNews = async (storyId: number) => {
+export const fetchStory = async (storyId: number) => {
     const result = await axios
         .get(baseURL + `/item/${storyId}.json`)
         .then(({ data }) => data)

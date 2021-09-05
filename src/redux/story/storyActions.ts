@@ -1,39 +1,47 @@
-import { FETCH_STORYIDS_REQUEST, FETCH_STORYIDS_SUCCESS, FETCH_STORYIDS_FAILURE } from './storyTypes'
+import { FETCH_STORIES_REQUEST, FETCH_STORIES_SUCCESS, FETCH_STORIES_FAILURE } from './storyTypes'
 import { baseURL } from 'utils/constants'
 import axios from 'axios'
 
 
-export const fetchStoryIDsRequest = () => {
+export const fetchStoryRequest = () => {
     return {
-        type: FETCH_STORYIDS_REQUEST
+        type: FETCH_STORIES_REQUEST
     }
 }
 
-export const fetchStoryIDsSuccess = (storyids: Array<number>) => {
+export const fetchStorySuccess = (storyids: Array<number>) => {
     return {
-        type: FETCH_STORYIDS_SUCCESS,
+        type: FETCH_STORIES_SUCCESS,
         payload: storyids
     }
 }
 
-export const fetchStoryIDsFailure = (error: any /* TODO! */) => {
+export const fetchStoryFailure = (error: any /* TODO! */) => {
     return {
-        type: FETCH_STORYIDS_FAILURE,
+        type: FETCH_STORIES_FAILURE,
         payload: error
     }
 }
 
 export const fetchStoryIDs = () => {
     return (dispatch: any /* TODO */) => {
-        dispatch(fetchStoryIDsRequest)
+        dispatch(fetchStoryRequest)
         axios.get(baseURL + '/newstories.json')
         .then(response => {
             const storyids = response.data
-            dispatch(fetchStoryIDsSuccess(storyids))
+            dispatch(fetchStorySuccess(storyids))
         })
         .catch(error => {
             const errMsg = error.message
-            dispatch(fetchStoryIDsFailure(errMsg))
+            dispatch(fetchStoryFailure(errMsg))
         })
     }
+}
+
+export const fetchNews = async (storyId: number) => {
+    const result = await axios
+        .get(baseURL + `/item/${storyId}.json`)
+        .then(({ data }) => data)
+        .catch(err => console.log(err));
+    return result
 }

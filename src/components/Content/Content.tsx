@@ -1,50 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Spinner, Button } from 'components/common'
-import { News } from './components'
-import { fetchNewsIds } from 'utils/functions'
+import React from 'react'
+import { Button } from 'components/common'
+import { ListOfStories } from './components'
 import styles from './Content.module.css'
+import { useDispatch } from 'react-redux'
+import { fetchStoryIDs } from 'redux/storyid/storyIDActions'
 
 export const Content: React.FunctionComponent = (): JSX.Element => {
 
-    const [newsIds, setNewsIds] = useState<Array<number>>([])
-    const [loading, setLoading] = useState<boolean>(false)
-
-    useEffect(() => {
-        fetchNewsIds().then(data => setNewsIds(data))
-    }, [])
-
-    useEffect(() => {
-        try {
-            const interval = setInterval(() => {
-                fetchNewsIds().then(data => setNewsIds(data));
-            }, 60000);
-            return () => {
-                clearInterval(interval)
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }, [newsIds])
+    const dispatch = useDispatch()
 
     const handleClick = () => {
-        setLoading(true)
-        fetchNewsIds().then(data => setNewsIds(data))
-        setLoading(false)
+        dispatch(fetchStoryIDs())
     }
 
     return (
         <div className={styles.root}>
             <Button onClick={handleClick}>Update News</Button>
-            {loading ? <Spinner /> :
-                <div className={styles.root_cards}>
-                    {newsIds && newsIds.slice(0, 100).map(storyId => (
-                        <Link to={`/item/${storyId}`} key={storyId}>
-                            <News storyId={storyId}/>
-                        </Link>
-                    ))} 
-                </div>
-            }
+            <ListOfStories />
         </div>
     )
 }

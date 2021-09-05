@@ -22,7 +22,7 @@ export const Comments:React.FunctionComponent<Props> = ({ commentId }): JSX.Elem
 
     return (
         <div style={{marginTop: "1rem"}}>
-            {comments.map((comment) => (
+            {comments && comments.map((comment) => (
                 <Comment key={comment.id} comment={comment}/>
             ))}
         </div>
