@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchComment } from 'utils/functions'
-import { Comment } from './components'
+//import { Comment } from './components'
 import { CommentModel } from 'models/CommentModel'
 
 interface Props {
@@ -9,22 +9,19 @@ interface Props {
 
 export const Comments:React.FunctionComponent<Props> = ({ commentId }): JSX.Element => {
 
-    const [comments, setComments] = useState<Array<CommentModel>>()
+    const [comment, setComment] = useState<CommentModel>()
 
     useEffect(() => {
         try {
-            fetchComment(commentId).then(data => setComments(data))
+            fetchComment(commentId).then(data => setComment(data))
         } catch (error) {
             console.log(error)
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [commentId])
 
     return (
         <div style={{marginTop: "1rem"}}>
-            {comments && comments.map((comment) => (
-                <Comment key={comment.id} comment={comment}/>
-            ))}
+            {comment && comment.text}
         </div>
     )
 }

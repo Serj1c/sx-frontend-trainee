@@ -1,31 +1,32 @@
-import { FETCH_STORY_REQUEST, FETCH_STORY_SUCCESS, FETCH_STORY_FAILURE } from './storyTypes'
-import { StoryModel } from 'models/StoryModel'
+import { FETCH_COMMENTIDS_REQUEST, FETCH_COMMENTIDS_SUCCESS, FETCH_COMMENTIDS_FAILURE } from './commentIDTypes'
+
+
 
 export type initialStateType = {
     isLoading: boolean
-    story: StoryModel
+    storyids: Array<number>
     error: string
 }
 
 export const initialState: initialStateType = {
     isLoading: false,
-    story: null,
+    storyids: [],
     error: '',
 }
 
-export const storyReducer = (state = initialState, action: any /* TODO! */) => {
+export const storyIDReducer = (state = initialState, action: any /* TODO! */) => {
     switch(action.type) {
-        case FETCH_STORY_REQUEST:
+        case FETCH_COMMENTIDS_REQUEST:
             return {
                 isLoading: true
             }
-        case FETCH_STORY_SUCCESS:
+        case FETCH_COMMENTIDS_SUCCESS:
             return {
                 isLoading: false,
-                story: action.payload,
+                storyids: action.payload,
                 error: ''
             }
-        case FETCH_STORY_FAILURE:
+        case FETCH_COMMENTIDS_FAILURE:
             return {
                 ...state,
                 isLoading: false,

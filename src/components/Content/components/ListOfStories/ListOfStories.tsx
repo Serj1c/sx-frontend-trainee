@@ -26,7 +26,7 @@ export const ListOfStories: React.FunctionComponent = (): JSX.Element => {
         }
     }, [dispatch])
 
-    const storyIDs = useSelector((state: any) => state.storyID.storyids)
+    const storyIDs = useSelector((state: any /* TODO */) => state.storyID.storyids)
 
     return (
         <div className={styles.root_cards}>
