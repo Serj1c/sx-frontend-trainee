@@ -1,0 +1,16 @@
+.root {
+    width: 50%;
+    margin-top: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.root_kid {
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+}
+
+.root:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+}
