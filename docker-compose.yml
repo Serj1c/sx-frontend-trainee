@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: '.'
+    ports:
+      - "3000:3000"
+    environment:
+      - ENV=${ENV}
+    volumes:
+      - .:/home/node/app
+
+

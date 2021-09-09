@@ -1,0 +1,1 @@
+export { ListOfComments } from './ListOfComments'

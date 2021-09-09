@@ -1,3 +1,3 @@
 export { Content } from './Content'
-export { NewsPage } from './NewsPage'
+export { StoryPage } from './StoryPage'
 export { Navbar } from './Navbar' 
