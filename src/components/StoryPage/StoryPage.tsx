@@ -25,7 +25,7 @@ export const StoryPage:React.FunctionComponent = (): JSX.Element => {
         } catch (error) {
             console.log(error)
         }
-    }, [dispatch, story.id])
+    }, [dispatch, story?.id])
 
     /* TODO handle update of comments the other way */
     const handleClick = () => {
